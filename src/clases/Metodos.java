@@ -8,14 +8,13 @@ public class Metodos extends InterfazInicial {
 
 	public List<String> ListaDeNombresDeOpciones = new ArrayList<>();
 	public List<Double> ListaDeFactoresDeConversiones = new ArrayList<>();
-	//public List<Double> ListaDeFactoresDeSuma = new ArrayList<>();
+	
 	
 	
 	public void añadirOpcionesMonedas() {
 		for(FactoresMonedas var : FactoresMonedas.values()) {
 			ListaDeNombresDeOpciones.add(var.getOpcionConversion());
 			ListaDeFactoresDeConversiones.add(var.getFactorConversion());
-			//ListaDeFactoresDeSuma.add(var.getFactorASumar());
 		}
 	}
 	public Double obtenerFactorMonedas(String eleccion) {
