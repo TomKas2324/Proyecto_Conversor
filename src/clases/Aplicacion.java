@@ -24,8 +24,7 @@ public class Aplicacion extends Metodos{
 	Operaciones operaciones = new Operaciones();
 	
 	public Aplicacion() {
-		añadirOpciones();
-		añadirAComboBox();
+		añadirOpciones(Interfaz);
 		validarCantidad();
 		DeterminarConversion();
 		iniciarInterfaz();
@@ -33,11 +32,6 @@ public class Aplicacion extends Metodos{
 	
 	public void iniciarInterfaz() {
 		Interfaz.setVisible(true);
-	}
-	
-	public void añadirAComboBox() {
-		for(Object var : ListaDeNombresDeOpcionesMonedas) {Interfaz.OpcionConversionMonedas.addItem(var);}
-		for(Object var : ListaDeNombresDeOpcionesTemperatura) {Interfaz.OpcionConversionTemperatura.addItem(var);}
 	}
 	
 	public void DeterminarConversion() {

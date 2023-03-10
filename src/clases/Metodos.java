@@ -13,6 +13,7 @@ public class Metodos extends InterfazInicial {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	public List<String> ListaDeNombresDeOpcionesMonedas = new ArrayList<>();
 	public List<Double> ListaDeFactoresDeConversionesMonedas = new ArrayList<>();
 	
@@ -25,7 +26,7 @@ public class Metodos extends InterfazInicial {
 	//Listas de Medidas
 	
 	
-	public void añadirOpciones() {
+	public void añadirOpciones(InterfazInicial interfaz) {
 		for(FactoresMonedas var : FactoresMonedas.values()) {
 			ListaDeNombresDeOpcionesMonedas.add(var.getNombreDeOpcion());
 			ListaDeFactoresDeConversionesMonedas.add(var.getFactorConversion());
@@ -36,6 +37,7 @@ public class Metodos extends InterfazInicial {
 			ListaDeConstantesASumarTemperatura.add(var.getConstanteASumar());
 				
 			}
+		añadirAComboBox(interfaz);
 		}
 	
 	public Double obtenerFactorMonedas(String eleccion) {
@@ -71,6 +73,10 @@ public class Metodos extends InterfazInicial {
 		return rslt;
 	}
 
+	public void añadirAComboBox(InterfazInicial interfaz) {
+		for(Object var : ListaDeNombresDeOpcionesMonedas) {interfaz.OpcionConversionMonedas.addItem(var);}
+		for(Object var : ListaDeNombresDeOpcionesTemperatura) {interfaz.OpcionConversionTemperatura.addItem(var);}
+	}
 }
 	
 
