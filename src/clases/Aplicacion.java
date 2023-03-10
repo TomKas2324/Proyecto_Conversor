@@ -16,11 +16,15 @@ import enums.FactoresMonedas;
 
 public class Aplicacion extends Metodos{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	InterfazInicial Interfaz = new InterfazInicial();
 	Operaciones operaciones = new Operaciones();
 	
 	public Aplicacion() {
-		añadirOpcionesMonedas();
+		añadirOpciones();
 		añadirAComboBox();
 		validarCantidad();
 		DeterminarConversion();
@@ -32,23 +36,30 @@ public class Aplicacion extends Metodos{
 	}
 	
 	public void añadirAComboBox() {
-		for(Object var : ListaDeNombresDeOpciones) {
-			Interfaz.OpcionConversionMonedas.addItem(var);
-			//TODO Añadir otro for con los otros enums?
-			
-		}
+		for(Object var : ListaDeNombresDeOpcionesMonedas) {Interfaz.OpcionConversionMonedas.addItem(var);}
+		for(Object var : ListaDeNombresDeOpcionesTemperatura) {Interfaz.OpcionConversionTemperatura.addItem(var);}
 	}
 	
 	public void DeterminarConversion() {
 		String eleccion;
 		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
 			eleccion = (String) Interfaz.OpcionConversionMonedas.getSelectedItem();
-			for(String var : ListaDeNombresDeOpciones) {
+			for(String var : ListaDeNombresDeOpcionesMonedas) {
 				if(var == eleccion) {
 					accionConvertirMonedas();
 				}
 			}
 		}
+		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
+			eleccion = (String) Interfaz.OpcionConversionTemperatura.getSelectedItem();
+			for(String var : ListaDeNombresDeOpcionesTemperatura) {
+				if(var == eleccion) {
+					accionConvertirTemperatura();
+				}
+			}
+		}
+
+		
 		
 		
 	}
@@ -69,15 +80,33 @@ public class Aplicacion extends Metodos{
 				} catch(NumberFormatException exp) {
 					Interfaz.cuadroResultado.setText("Fallo");
 				}
-				
-				
-				
+				}
+			});
+		}
+	
+	
+
+	public void accionConvertirTemperatura() {
+		Interfaz.botonConvertirTemperatura.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String accion = e.getActionCommand();
+					if(accion.equals("CONVERTIR")) {
+						
+						String eleccion = (String) Interfaz.OpcionConversionTemperatura.getSelectedItem();
+						Double factor = obtenerFactorTemperatura(eleccion);
+						Double constanteASumar = obtenerConstanteTemperatura(eleccion);
+						Double cantidad = (double) Integer.parseInt(Interfaz.cuadroCantidadTemperatura.getText());
+						
+						Interfaz.cuadroResultado.setText(operaciones.OperacionTemperatura(factor,cantidad,constanteASumar));
+						}
+				} catch(NumberFormatException exp) {
+					Interfaz.cuadroResultado.setText("Fallo");
+				}
 			}
-			
-			
 		});
 	}
-
 	public void validarCantidad() {
 		AbstractDocument doc = (AbstractDocument) Interfaz.cuadroCantidadMonedas.getDocument();
 		doc.setDocumentFilter(new DocumentFilter() {

@@ -2,36 +2,75 @@ package clases;
 
 import java.util.*;
 import enums.FactoresMonedas;
+import enums.FactoresTemperatura;
 import uis.InterfazInicial;
 
 public class Metodos extends InterfazInicial {
 
-	public List<String> ListaDeNombresDeOpciones = new ArrayList<>();
-	public List<Double> ListaDeFactoresDeConversiones = new ArrayList<>();
+	//Listas de Monedas
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public List<String> ListaDeNombresDeOpcionesMonedas = new ArrayList<>();
+	public List<Double> ListaDeFactoresDeConversionesMonedas = new ArrayList<>();
+	
+	//Listas de Temperatura
+	
+	public List<String> ListaDeNombresDeOpcionesTemperatura = new ArrayList<>();
+	public List<Double> ListaDeFactoresDeConversionesTemperatura = new ArrayList<>();
+	public List<Double> ListaDeConstantesASumarTemperatura = new ArrayList<>();
+	
+	//Listas de Medidas
 	
 	
-	
-	public void añadirOpcionesMonedas() {
+	public void añadirOpciones() {
 		for(FactoresMonedas var : FactoresMonedas.values()) {
-			ListaDeNombresDeOpciones.add(var.getOpcionConversion());
-			ListaDeFactoresDeConversiones.add(var.getFactorConversion());
+			ListaDeNombresDeOpcionesMonedas.add(var.getNombreDeOpcion());
+			ListaDeFactoresDeConversionesMonedas.add(var.getFactorConversion());
 		}
-	}
+		for(FactoresTemperatura var : FactoresTemperatura.values()) {
+			ListaDeNombresDeOpcionesTemperatura.add(var.getNombreDeOpcion());
+			ListaDeFactoresDeConversionesTemperatura.add(var.getFactorConversion());
+			ListaDeConstantesASumarTemperatura.add(var.getConstanteASumar());
+				
+			}
+		}
+	
 	public Double obtenerFactorMonedas(String eleccion) {
 		int i = 0;
 		Double rslt = 0.0;
-		for(String var : ListaDeNombresDeOpciones) {
-			
-			if(var == eleccion) {
-				rslt = ListaDeFactoresDeConversiones.get(i);
-			}
+		
+		for(String var : ListaDeNombresDeOpcionesMonedas) {
+			if(var == eleccion) {rslt = ListaDeFactoresDeConversionesMonedas.get(i);}
 			i++;
-		}return rslt;
-
-	
-		
-		
+		}
+		return rslt;
 	}
+	
+	public Double obtenerFactorTemperatura(String eleccion) {
+		int i = 0;
+		Double rslt = 0.0;
+		
+		for(String var : ListaDeNombresDeOpcionesTemperatura) {
+			if(var == eleccion) {rslt = ListaDeFactoresDeConversionesTemperatura.get(i);}
+			i++;
+		}
+		return rslt;
+	}
+	
+	public Double obtenerConstanteTemperatura(String eleccion) {
+		int i = 0;
+		Double rslt = 0.0;
+		
+		for(String var : ListaDeNombresDeOpcionesTemperatura) {
+			if(var == eleccion) {rslt = ListaDeConstantesASumarTemperatura.get(i);}
+			i++;
+		}
+		return rslt;
+	}
+
 }
 	
 

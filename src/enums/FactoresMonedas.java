@@ -21,7 +21,7 @@ public enum FactoresMonedas {
 		this.factorConversion = factorConversion;
 	}
 
-	public String getOpcionConversion() {
+	public String getNombreDeOpcion() {
 		return opcionConversion;
 	}
 

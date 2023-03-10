@@ -83,11 +83,11 @@ public class InterfazInicial extends JFrame {
 				FormSpecs.LINE_GAP_ROWSPEC,
 				RowSpec.decode("129px:grow"),}));
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBorder(new MatteBorder(5, 0, 3, 0, (Color) new Color(128, 255, 255)));
-		contentPane.add(panel_1, "1, 2, 2, 1, fill, fill");
-		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(new Color(255, 255, 255));
+		panelPrincipal.setBorder(new MatteBorder(5, 0, 3, 0, (Color) new Color(128, 255, 255)));
+		contentPane.add(panelPrincipal, "1, 2, 2, 1, fill, fill");
+		panelPrincipal.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("186px"),
 				ColumnSpec.decode("204px"),},
 			new RowSpec[] {
@@ -101,13 +101,13 @@ public class InterfazInicial extends JFrame {
 		tabPanel.setBackground(new Color(255, 255, 255));
 		tabPanel.setBorder(null);
 		tabPanel.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		panel_1.add(tabPanel, "1, 3, 2, 1, fill, fill");
+		panelPrincipal.add(tabPanel, "1, 3, 2, 1, fill, fill");
 
 		
-				JPanel panel_2 = new JPanel();
-				panel_2.setBackground(new Color(255, 255, 255));
-				tabPanel.addTab("MONEDAS", null, panel_2, null);
-				panel_2.setLayout(new FormLayout(new ColumnSpec[] {
+				JPanel panelMonedas = new JPanel();
+				panelMonedas.setBackground(new Color(255, 255, 255));
+				tabPanel.addTab("MONEDAS", null, panelMonedas, null);
+				panelMonedas.setLayout(new FormLayout(new ColumnSpec[] {
 						ColumnSpec.decode("78px"),
 						ColumnSpec.decode("max(74dlu;default):grow"),
 						FormSpecs.RELATED_GAP_COLSPEC,
@@ -123,10 +123,10 @@ public class InterfazInicial extends JFrame {
 						JLabel lblNewLabel = new JLabel("OPCIONES");
 						lblNewLabel.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
 						lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-						panel_2.add(lblNewLabel, "1, 2, center, center");
+						panelMonedas.add(lblNewLabel, "1, 2, center, center");
 						
 						OpcionConversionMonedas = new JComboBox<>();
-						panel_2.add(OpcionConversionMonedas, "2, 2, 5, 1, left, center");
+						panelMonedas.add(OpcionConversionMonedas, "2, 2, 5, 1, left, center");
 						
 						botonConvertirMonedas = new JButton("CONVERTIR");
 						botonConvertirMonedas.addActionListener(new ActionListener() {
@@ -134,20 +134,20 @@ public class InterfazInicial extends JFrame {
 							}
 						});
 						botonConvertirMonedas.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-						panel_2.add(botonConvertirMonedas, "3, 3, 4, 1, left, center");
+						panelMonedas.add(botonConvertirMonedas, "3, 3, 4, 1, left, center");
 						
 						JLabel lblNewLabel_1 = new JLabel("CANTIDAD");
 						lblNewLabel_1.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-						panel_2.add(lblNewLabel_1, "1, 3, center, center");
+						panelMonedas.add(lblNewLabel_1, "1, 3, center, center");
 						
 						cuadroCantidadMonedas = new JTextField();
-						panel_2.add(cuadroCantidadMonedas, "2, 3, left, default");
+						panelMonedas.add(cuadroCantidadMonedas, "2, 3, left, default");
 						cuadroCantidadMonedas.setColumns(10);
 
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 255, 255));
-		tabPanel.addTab("MEDIDAS", null, panel_4, null);
-		panel_4.setLayout(new FormLayout(new ColumnSpec[] {
+		JPanel panelMedidas = new JPanel();
+		panelMedidas.setBackground(new Color(255, 255, 255));
+		tabPanel.addTab("MEDIDAS", null, panelMedidas, null);
+		panelMedidas.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("78px"),
 				ColumnSpec.decode("max(74dlu;default):grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -162,29 +162,29 @@ public class InterfazInicial extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("OPCIONES");
 		lblNewLabel_3.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_4.add(lblNewLabel_3, "1, 2, center, default");
+		panelMedidas.add(lblNewLabel_3, "1, 2, center, default");
 		
-		OpcionConversionMedidas = new JComboBox();
-		panel_4.add(OpcionConversionMedidas, "2, 2, 5, 1, left, center");
+		OpcionConversionMedidas = new JComboBox<>();
+		panelMedidas.add(OpcionConversionMedidas, "2, 2, 5, 1, left, center");
 		
 		
 		JLabel lblNewLabel_4 = new JLabel("CANTIDAD");
 		lblNewLabel_4.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_4.add(lblNewLabel_4, "1, 3, center, default");
+		panelMedidas.add(lblNewLabel_4, "1, 3, center, default");
 		
 		cuadroCantidadMedidas = new JTextField();
-		panel_4.add(cuadroCantidadMedidas, "2, 3, left, default");
+		panelMedidas.add(cuadroCantidadMedidas, "2, 3, left, default");
 		cuadroCantidadMedidas.setColumns(10);
 		
 		botonConvertirMedidas = new JButton("CONVERTIR");
 		botonConvertirMedidas.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_4.add(botonConvertirMedidas, "3, 3, 4, 1, left, center");
+		panelMedidas.add(botonConvertirMedidas, "3, 3, 4, 1, left, center");
 		
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(255, 255, 255));
-		tabPanel.addTab("TEMPERATURA", null, panel_3, null);
-		panel_3.setLayout(new FormLayout(new ColumnSpec[] {
+		JPanel panelTemperatura = new JPanel();
+		panelTemperatura.setBackground(new Color(255, 255, 255));
+		tabPanel.addTab("TEMPERATURA", null, panelTemperatura, null);
+		panelTemperatura.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("78px"),
 				ColumnSpec.decode("max(74dlu;default):grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
@@ -199,28 +199,30 @@ public class InterfazInicial extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("OPCIONES");
 		lblNewLabel_5.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_3.add(lblNewLabel_5, "1, 2, center, default");
+		panelTemperatura.add(lblNewLabel_5, "1, 2, center, default");
 		
-		JComboBox OpcionConversionTemperatura = new JComboBox();
-		panel_3.add(OpcionConversionTemperatura, "2, 2, 5, 1, left, center");
+		OpcionConversionTemperatura = new JComboBox<>();
+		panelTemperatura.add(OpcionConversionTemperatura, "2, 2, 5, 1, left, center");
 		
 		JLabel lblNewLabel_6 = new JLabel("CANTIDAD");
 		lblNewLabel_6.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_3.add(lblNewLabel_6, "1, 3, center, default");
+		panelTemperatura.add(lblNewLabel_6, "1, 3, center, default");
 		
 		cuadroCantidadTemperatura = new JTextField();
-		panel_3.add(cuadroCantidadTemperatura, "2, 3, left, default");
+		panelTemperatura.add(cuadroCantidadTemperatura, "2, 3, left, default");
 		cuadroCantidadTemperatura.setColumns(10);
 		
 		botonConvertirTemperatura = new JButton("CONVERTIR");
+		botonConvertirTemperatura.setBackground(new Color(255, 255, 255));
+		botonConvertirTemperatura.setForeground(new Color(0, 255, 255));
 		botonConvertirTemperatura.setFont(new Font("Leelawadee UI", Font.PLAIN, 11));
-		panel_3.add(botonConvertirTemperatura, "3, 3, 4, 1, left, center");
+		panelTemperatura.add(botonConvertirTemperatura, "3, 3, 4, 1, left, center");
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBorder(null);
-		contentPane.add(panel, "4, 2, center, fill");
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
+		JPanel panelSecundario = new JPanel();
+		panelSecundario.setBackground(new Color(255, 255, 255));
+		panelSecundario.setBorder(null);
+		contentPane.add(panelSecundario, "4, 2, center, fill");
+		panelSecundario.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("135px:grow"),},
 			new RowSpec[] {
 				RowSpec.decode("max(0dlu;default)"),
@@ -243,13 +245,13 @@ public class InterfazInicial extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Leelawadee UI", Font.PLAIN, 12));
-		panel.add(btnNewButton, "1, 1, 1, 2, right, top");
+		panelSecundario.add(btnNewButton, "1, 1, 1, 2, right, top");
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setForeground(new Color(255, 255, 255));
 		panel_5.setBorder(new MatteBorder(5, 0, 3, 0, (Color) new Color(128, 255, 255)));
 		panel_5.setBackground(new Color(255, 255, 255));
-		panel.add(panel_5, "1, 4, 1, 8, fill, fill");
+		panelSecundario.add(panel_5, "1, 4, 1, 8, fill, fill");
 		panel_5.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("24px"),
 				ColumnSpec.decode("106px"),},
@@ -264,7 +266,8 @@ public class InterfazInicial extends JFrame {
 		panel_5.add(lblNewLabel_2, "1, 2, 2, 1, center, top");
 		
 		cuadroResultado = new JTextField();
+		cuadroResultado.setEditable(false);
 		cuadroResultado.setColumns(10);
-		panel_5.add(cuadroResultado, "1, 4, 2, 1, center, top");
+		panel_5.add(cuadroResultado, "1, 4, 2, 1, fill, top");
 	}
 }
