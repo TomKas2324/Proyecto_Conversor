@@ -2,12 +2,17 @@ package clases;
 
 import uis.InterfazInicial;
 
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.swing.JLabel;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
@@ -26,7 +31,10 @@ public class Aplicacion extends Metodos{
 	public Aplicacion() {
 		añadirOpciones(Interfaz);
 		validarCantidad();
-		DeterminarConversion();
+		cambiarIdioma();
+		accionConvertirMonedas();
+		accionConvertirTemperatura();
+		//DeterminarConversion();
 		iniciarInterfaz();
 	}
 	
@@ -35,27 +43,27 @@ public class Aplicacion extends Metodos{
 	}
 	
 	public void DeterminarConversion() {
-		String eleccion;
-		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
-			eleccion = (String) Interfaz.OpcionConversionMonedas.getSelectedItem();
-			for(String var : ListaDeNombresDeOpcionesMonedas) {
-				if(var == eleccion) {
-					accionConvertirMonedas();
-				}
-			}
-		}
-		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
-			eleccion = (String) Interfaz.OpcionConversionTemperatura.getSelectedItem();
-			for(String var : ListaDeNombresDeOpcionesTemperatura) {
-				if(var == eleccion) {
-					accionConvertirTemperatura();
-				}
-			}
-		}
+		
+		//		String eleccion;
+//		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
+//			accionConvertirMonedas();
+////			eleccion = (String) Interfaz.OpcionConversionMonedas.getSelectedItem();
+////			for(String var : ListaDeNombresDeOpcionesMonedas) {
+////				if(var == eleccion) {
+////					accionConvertirMonedas();
+////				}
+////			}
+//		}
+//		if(Interfaz.tabPanel.getSelectedIndex() == 0) {
+//			//accionConvertirTemperatura();
+//			eleccion = (String) Interfaz.OpcionConversionTemperatura.getSelectedItem();
+//			for(String var : ListaDeNombresDeOpcionesTemperatura) {
+//				if(var == eleccion) {
+//					accionConvertirTemperatura();
+//				}
+//			}
+//		}
 
-		
-		
-		
 	}
 	
 	public void accionConvertirMonedas() {
@@ -64,13 +72,13 @@ public class Aplicacion extends Metodos{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String accion = e.getActionCommand();
-					if(accion.equals("CONVERTIR")) {
-						
+					if(accion.equals("CONVERTIR") || accion.equals("CONVERT")) {
 						String eleccion = (String) Interfaz.OpcionConversionMonedas.getSelectedItem();
 						Double factor = obtenerFactorMonedas(eleccion);
 						Double cantidad = (double) Integer.parseInt(Interfaz.cuadroCantidadMonedas.getText());
 						Interfaz.cuadroResultado.setText(operaciones.OperacionMonedas(factor, cantidad));
 						}
+					
 				} catch(NumberFormatException exp) {
 					Interfaz.cuadroResultado.setText("Fallo");
 				}
@@ -86,7 +94,7 @@ public class Aplicacion extends Metodos{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String accion = e.getActionCommand();
-					if(accion.equals("CONVERTIR")) {
+					if(accion.equals("CONVERTIR") || accion.equals("CONVERT")) {
 						
 						String eleccion = (String) Interfaz.OpcionConversionTemperatura.getSelectedItem();
 						Double factor = obtenerFactorTemperatura(eleccion);
@@ -101,6 +109,7 @@ public class Aplicacion extends Metodos{
 			}
 		});
 	}
+	
 	public void validarCantidad() {
 		AbstractDocument doc = (AbstractDocument) Interfaz.cuadroCantidadMonedas.getDocument();
 		doc.setDocumentFilter(new DocumentFilter() {
@@ -115,6 +124,59 @@ public class Aplicacion extends Metodos{
 					}
 			}
 		});
+	}
+	
+	public void cambiarIdioma() {
+		Interfaz.botonIdioma.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				Interfaz.opcionesIdiomas.show(Interfaz.botonIdioma,(Interfaz.botonIdioma.getWidth()*-1)-2, 0);
+				Interfaz.opcionIdiomaEspañol.addActionListener(new ActionListener() {
+					//Cambio de Idioma a Español
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Map<Integer,String> titulosEspañol= new HashMap<>() {{
+							put(0,"MONEDAS");
+							put(1,"DISTANCIA");
+							put(2,"TEMPERATURA");
+						}};
+						cambiarLabelCantidad(Interfaz, "CANTIDAD");
+						cambiarLabelOpciones(Interfaz, "OPCIONES");
+						cambiarTitulosTabs(Interfaz, titulosEspañol);
+						Interfaz.labelResultado.setText("RESULTADO");
+						cambiarTextoBotones(Interfaz, "CONVERTIR");
+						reemplazarComboBox(Interfaz, 0);
+					}
+				});
+				
+				Interfaz.opcionIdiomaIngles.addActionListener(new ActionListener() {
+					//Cambio de idioma a Ingles
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Map<Integer,String> titulosIngles = new HashMap<>() {{
+							put(0,"CURRENCY");
+							put(1,"DISTANCE");
+							put(2,"TEMPERATURE");
+						}};
+						cambiarLabelCantidad(Interfaz, "AMOUNT");
+						cambiarLabelOpciones(Interfaz, "OPTIONS");
+						cambiarTitulosTabs(Interfaz, titulosIngles);
+						Interfaz.labelResultado.setText("RESULT");
+						cambiarTextoBotones(Interfaz, "CONVERT");
+						reemplazarComboBox(Interfaz, 1);
+						
+						
+					}
+					
+				});
+				
+
+			}
+			
+		});
+		
+		
 	}
 	
 	
