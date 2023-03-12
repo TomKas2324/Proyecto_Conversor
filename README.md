@@ -3,8 +3,7 @@
 Desafio propuesto por Alura Latam en el programa Oracle Next Education/ONE
 A Challenge propouse by Alura Latam for the program Oracle Next Education/ONE
 
-## El programa consiste de un conversor de unidades con opción de elegir que tipo de unidad convertir además de poder elegir entre español e ingles - 
-The app consist of a unit converter with option to also change language between Spanish and English
+## El programa consiste de un conversor de unidades con opción de elegir que tipo de unidad convertir además de poder elegir entre español e ingles - The app consist of a unit converter with option to also change language between Spanish and English
 
 
 
