@@ -34,8 +34,10 @@ public class Operaciones {
 		return resultadoFinal;
 	}
 	
-	public String OperacionMedidas() {
-		
-		return "";
+	public String OperacionMedidas(Double FactorConversion,Double CantidadInsertada) {
+		double resultado = FactorConversion * CantidadInsertada;
+		BigDecimal resultadoDecimal = new BigDecimal(resultado).setScale(2, RoundingMode.CEILING);
+		String resultadoFinal = resultadoDecimal.toString();
+		return resultadoFinal;
 	}
 }

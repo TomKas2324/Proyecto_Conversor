@@ -96,6 +96,9 @@ public class InterfazInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfazInicial() {
+		setForeground(new Color(0, 255, 255));
+		setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		setTitle("CONVERSOR DE UNIDADES");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 606, 218);
@@ -137,6 +140,7 @@ public class InterfazInicial extends JFrame {
 				JPanel panelMonedas = new JPanel();
 				panelMonedas.setBackground(new Color(255, 255, 255));
 				tabPanel.addTab("MONEDAS", null, panelMonedas, null);
+				tabPanel.setBackgroundAt(0, new Color(185, 255, 253));
 				panelMonedas.setLayout(new FormLayout(new ColumnSpec[] {
 						ColumnSpec.decode("78px"),
 						ColumnSpec.decode("max(74dlu;default):grow"),
@@ -156,6 +160,7 @@ public class InterfazInicial extends JFrame {
 						panelMonedas.add(labelOpcionesMonedas, "1, 2, center, center");
 						
 						OpcionConversionMonedas = new JComboBox<>();
+						OpcionConversionMonedas.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 12));
 						panelMonedas.add(OpcionConversionMonedas, "2, 2, 5, 1, left, center");
 						
 						botonConvertirMonedas = new JButton("CONVERTIR");
@@ -179,6 +184,7 @@ public class InterfazInicial extends JFrame {
 		JPanel panelMedidas = new JPanel();
 		panelMedidas.setBackground(new Color(255, 255, 255));
 		tabPanel.addTab("DISTANCIA", null, panelMedidas, null);
+		tabPanel.setBackgroundAt(1, new Color(185, 255, 253));
 		panelMedidas.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("78px"),
 				ColumnSpec.decode("max(74dlu;default):grow"),
@@ -197,6 +203,7 @@ public class InterfazInicial extends JFrame {
 		panelMedidas.add(labelOpcionesMedidas, "1, 2, center, default");
 		
 		OpcionConversionMedidas = new JComboBox<>();
+		OpcionConversionMedidas.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 12));
 		panelMedidas.add(OpcionConversionMedidas, "2, 2, 5, 1, left, center");
 		
 		
@@ -222,6 +229,7 @@ public class InterfazInicial extends JFrame {
 		JPanel panelTemperatura = new JPanel();
 		panelTemperatura.setBackground(new Color(255, 255, 255));
 		tabPanel.addTab("TEMPERATURA", null, panelTemperatura, null);
+		tabPanel.setBackgroundAt(2, new Color(185, 255, 253));
 		panelTemperatura.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("78px"),
 				ColumnSpec.decode("max(74dlu;default):grow"),
@@ -240,6 +248,7 @@ public class InterfazInicial extends JFrame {
 		panelTemperatura.add(labelOpcionesTemperatura, "1, 2, center, default");
 		
 		OpcionConversionTemperatura = new JComboBox<>();
+		OpcionConversionTemperatura.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 12));
 		panelTemperatura.add(OpcionConversionTemperatura, "2, 2, 5, 1, left, center");
 		
 		labelCantidadTemperatura = new JLabel("CANTIDAD");

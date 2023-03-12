@@ -1,6 +1,8 @@
 package clases;
 
 import java.util.*;
+
+import enums.FactoresMedidas;
 import enums.FactoresMonedas;
 import enums.FactoresTemperatura;
 import uis.InterfazInicial;
@@ -27,6 +29,10 @@ public class Metodos extends InterfazInicial {
 	
 	//Listas de Medidas
 	
+	public List<String> ListaDeNombresDeOpcionesMedidas = new ArrayList<>();
+	public List<Double> ListaDeFactoresDeConversionesMedidas = new ArrayList<>();
+	public List<String> ListaDeNombresDeOpcionesInglesMedidas = new ArrayList<>();
+
 	
 	public void añadirOpciones(InterfazInicial interfaz) {
 		for(FactoresMonedas var : FactoresMonedas.values()) {
@@ -40,6 +46,11 @@ public class Metodos extends InterfazInicial {
 			ListaDeConstantesASumarTemperatura.add(var.getConstanteASumar());
 			ListaDeNombresDeOpcionesInglesTemperatura.add(var.getNombreDeOpcionIngles());	
 			}
+		for(FactoresMedidas var : FactoresMedidas.values()) {
+			ListaDeNombresDeOpcionesMedidas.add(var.getNombreDeOpcion());
+			ListaDeFactoresDeConversionesMedidas.add(var.getFactorConversion());
+			ListaDeNombresDeOpcionesInglesMedidas.add(var.getNombreDeOpcionIngles());
+		}
 		añadirAComboBox(interfaz);
 		}
 	
@@ -73,6 +84,21 @@ public class Metodos extends InterfazInicial {
 		return rslt;
 	}
 	
+	public Double obtenerFactorMedidas(String eleccion) {
+		int i = 0;
+		int l = 0;
+		Double rslt = 0.0;
+		for(String var : ListaDeNombresDeOpcionesMedidas) {
+			if(var == eleccion) {rslt = ListaDeFactoresDeConversionesMedidas.get(i);}
+			i++;
+		}
+		for(String var : ListaDeNombresDeOpcionesInglesMedidas) {
+			if(var == eleccion) {rslt = ListaDeFactoresDeConversionesMedidas.get(l);}
+			l++;
+		}
+		return rslt;
+	}
+	
 	public Double obtenerConstanteTemperatura(String eleccion) {
 		int i = 0;
 		int l = 0;
@@ -92,11 +118,13 @@ public class Metodos extends InterfazInicial {
 	public void añadirAComboBox(InterfazInicial interfaz) {
 		for(Object var : ListaDeNombresDeOpcionesMonedas) {interfaz.OpcionConversionMonedas.addItem(var);}
 		for(Object var : ListaDeNombresDeOpcionesTemperatura) {interfaz.OpcionConversionTemperatura.addItem(var);}
+		for(Object var : ListaDeNombresDeOpcionesMedidas) {interfaz.OpcionConversionMedidas.addItem(var);}
 	}
 	
 	public void añadirAComboBoxIngles(InterfazInicial interfaz) {
 		for(Object var : ListaDeNombresDeOpcionesInglesMonedas) {interfaz.OpcionConversionMonedas.addItem(var);}
 		for(Object var : ListaDeNombresDeOpcionesInglesTemperatura) {interfaz.OpcionConversionTemperatura.addItem(var);}
+		for(Object var : ListaDeNombresDeOpcionesInglesMedidas) {interfaz.OpcionConversionMedidas.addItem(var);}
 	}
 	
 	public void cambiarLabelOpciones(InterfazInicial interfaz,String texto) {
